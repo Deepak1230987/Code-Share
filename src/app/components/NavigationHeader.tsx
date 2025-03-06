@@ -1,9 +1,10 @@
 
 "use client ";
-import { SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Blocks, Code2, Sparkles } from "lucide-react";
 import Link from "next/link";
 import UserProfile from "../(root)/_components/UserProfile";
+import MyProfile from "../(root)/_components/MyProfile";
 
 function NavigationHeader() {
   return (
@@ -73,6 +74,9 @@ function NavigationHeader() {
             </SignedOut>
 
             {/* profile button */}
+           <SignedIn>
+           <MyProfile/>
+           </SignedIn>
             <UserProfile />
           </div>
         </div>

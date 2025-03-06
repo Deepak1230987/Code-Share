@@ -9,6 +9,7 @@ import UserProfile from "./UserProfile";
 import ThemeSelector from "./ThemeSelector";
 import LanguageSelector from "./LanguageSelector";
 import RunButton from "./RunButton";
+import MyProfile from "./MyProfile";
 
 const Header = async () => {
   const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
@@ -88,7 +89,9 @@ const Header = async () => {
           )}
 
           <SignedIn>
+            
             <RunButton />
+            <MyProfile/>
           </SignedIn>
 
           <div className="pl-3 border-l flex justify-center items-center border-gray-600">

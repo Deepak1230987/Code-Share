@@ -35,6 +35,7 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
     error: null,
     editor: null,
     executionResult: null,
+    userInput: "",
 
     getCode: () => get().editor?.getValue() || "",
 
@@ -43,6 +44,10 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
       if (savedCode) editor.setValue(savedCode);
 
       set({ editor });
+    },
+
+    setUserInput: (input: string) => {
+      set({ userInput: input });
     },
 
     setTheme: (theme: string) => {
@@ -72,7 +77,7 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
     },
 
     runCode: async () => {
-      const { language, getCode } = get();
+      const { language, getCode,userInput } = get();
       const code = getCode();
 
       if (!code) {
@@ -93,6 +98,7 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
             language: runtime.language,
             version: runtime.version,
             files: [{ content: code }],
+            stdin: userInput,
           }),
         });
 
