@@ -73,7 +73,7 @@ const Header = async () => {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
             <ThemeSelector />
-            <LanguageSelector hasAccess={true} />
+            <LanguageSelector hasAccess={Boolean(convexUser?.isPro)} />
           </div>
 
           {!convexUser?.isPro && (
@@ -89,9 +89,8 @@ const Header = async () => {
           )}
 
           <SignedIn>
-            
             <RunButton />
-            <MyProfile/>
+            <MyProfile />
           </SignedIn>
 
           <div className="pl-3 border-l flex justify-center items-center border-gray-600">
